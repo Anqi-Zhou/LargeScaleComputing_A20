@@ -28,15 +28,13 @@ def sim(S):
     z_mat = np.zeros((T, N))
     eps_mat = sts.norm.rvs(loc=0, scale=sigma, size=(T, N))
     # Simulate N random walks on each MPI Process and specify as a NumPy Array
-    for i in range(N):
+    for s_ind in range(N):
         z_tm1 = z_0
         for t_ind in range(T):
             e_t = eps_mat[t_ind, s_ind]
             z_t = rho * z_tm1 + (1 - rho) * mu + e_t
             z_mat[t_ind, s_ind] = z_t
             z_tm1 = z_t
-        
-    r_walks_array = np.array(r_walks)
 
     # Gather all simulation arrays to buffer of expected size/dtype on rank 0
     z_mat_all = None
@@ -55,4 +53,3 @@ def main():
     
 if __name__ == '__main__':
     main()
-    
