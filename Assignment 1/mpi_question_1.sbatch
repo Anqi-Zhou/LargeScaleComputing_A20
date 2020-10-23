@@ -13,3 +13,5 @@ for i in {1..20}
 do
   mpirun -n $i python3 question_1.py >> mpi_question_1.out
 done
+
+mpirun -n 1 python3 time_plot_q1.py >> time_plot_q1.out
