@@ -46,7 +46,9 @@ def sim(S):
     if rank == 0:
         # Calculate time elapsed after computing mean and std
         time_elapsed = time.time() - t0
-        print("simulation time is", time_elapsed)
+        
+        with open('time_question_1.txt','a') as f:
+            print(time_elapsed, file = f)
         
 def main():
     sim(S = 1000)
