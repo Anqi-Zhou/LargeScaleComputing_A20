@@ -18,3 +18,6 @@ def plot_time():
 
 def main():
   plot_time()
+
+if __name__ == '__main__':
+  main()
